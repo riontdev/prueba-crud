@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    restart: always
+    command: npm start
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+
+  
+  mariadb:
+    image: mariadb:10
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: prueba2024!
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
